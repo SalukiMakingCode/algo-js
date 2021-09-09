@@ -28,12 +28,3 @@ console.log(rectangle3);
 console.log(rectangle1.collides(rectangle2));
 console.log(rectangle1.collides(rectangle3));
 console.log(rectangle1.collides(rectangle4));
-
-//if ( otherRectangle.topLeftXPos > this.topLeftXPos + this.width
-//    || otherRectangle.topLeftXPos < this.topLeftXPos - otherRectangle.width
-//    || otherRectangle.topLeftYPos > this.topLeftYPos + this.length
-//    || otherRectangle.topLeftYPos < this.topLeftYPos – otherRectangle.length ) {
-    // Pas de collision
-//} else {
-    // Collision
-//}
