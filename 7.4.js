@@ -1,8 +1,15 @@
 const readlineSync = require("readline-sync");
-var requestURL = 'pizza.json';
-var request = new XMLHttpRequest();
-let userChoice=0;
+const fs = require('fs');
 let pizzaFlavor = [] ;
+const data = fs.readFileSync('pizza.json', 'utf8')
+object2 = JSON.parse(data);
+let pizzaJson = Object.values(object2);
+for (let elem of pizzaJson) {
+    pizzaFlavor.push(elem.pizzaFlavor);
+}
+
+let userChoice=0;
+
 let addPizza="";
 let pressEnter="";
 let check = 0 ;
