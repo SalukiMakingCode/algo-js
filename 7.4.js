@@ -1,18 +1,20 @@
 const readlineSync = require("readline-sync");
 const fs = require('fs');
-let pizzaFlavor = [] ;
 const data = fs.readFileSync('pizza.json', 'utf8')
-object2 = JSON.parse(data);
-let pizzaJson = Object.values(object2);
-for (let elem of pizzaJson) {
-    pizzaFlavor.push(elem.pizzaFlavor);
-}
-
+let pizzaFlavor=JSON.parse(data);
 let userChoice=0;
-
 let addPizza="";
 let pressEnter="";
 let check = 0 ;
+
+function refreshJson () {
+        fs.writeFile('pizza.json', JSON.stringify(pizzaFlavor), err => {
+            if (err) {
+                console.error(err);
+            } })
+        console.log(pizzaFlavor);
+}
+
 function loadMenu (before) {
     console.log("\u001B[2J\u001B[0;0f");
     if (before!=="" && before!==undefined) {
@@ -51,6 +53,7 @@ function loadMenu (before) {
         case 2 :
             addPizza=readlineSync.question("Witch flavor do you want to add ?");
             pizzaFlavor.push(addPizza);
+            refreshJson();
             console.log("The new flavor "+addPizza+" is now available !");
             console.log("");
             pressEnter=readlineSync.question("Press enter to go back to the menu");
@@ -76,6 +79,7 @@ function loadMenu (before) {
             removePizza--;
             if (check>removePizza && removePizza>-1) {
                 pizzaFlavor.splice(removePizza, 1);
+                refreshJson();
                 console.log("");
                 console.log("This flavor isn't available anymore");
                 console.log("");
