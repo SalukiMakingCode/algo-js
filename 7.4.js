@@ -1,4 +1,6 @@
 const readlineSync = require("readline-sync");
+var requestURL = 'pizza.json';
+var request = new XMLHttpRequest();
 let userChoice=0;
 let pizzaFlavor = [] ;
 let addPizza="";
